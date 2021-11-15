@@ -1,0 +1,25 @@
+
+  .form {
+    position: relative;
+    top: 20%;
+    width: 100%;
+
+    mat-card-content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      section {
+        min-width: 49%;
+        background-color: #d1d1d1;
+        padding-bottom: 8px;
+
+      }
+    }
+    mat-card-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+

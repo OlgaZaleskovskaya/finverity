@@ -1,0 +1,61 @@
+<app-form-wrapper>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
+
+    <section class="field-wrap">
+      <app-text-input
+        formControlName="zipCode" [parentForm]="registrationForm" [fieldName]="'zipCode'"
+        [label]="'Индекс'" [isRequired]="hasValidator('zipCode','required')" [errors]="errors"
+        >
+      </app-text-input>
+    </section>
+
+    <section class="field-wrap">
+      <app-select-input [isClearable]="false"
+                        formControlName="country" [parentForm]="registrationForm" fieldName="country" valueKey="id"
+                        [label]="'Страна'" [isRequired]="hasValidator('country','required')" [errors]="errors"
+                        [options]="countries$ | async">
+      </app-select-input>
+    </section>
+
+    <section class="field-wrap">
+      <app-text-input formControlName="region" [isRequired]="hasValidator('region','required')"
+                      [parentForm]="registrationForm" [fieldName]="'region'" [label]="'Область'"
+                      [errors]="errors">
+      </app-text-input>
+    </section>
+
+    <section class="field-wrap">
+      <app-select-input [isClearable]="false"
+                        formControlName="city" [parentForm]="registrationForm" fieldName="city" valueKey="id"
+                        [label]="'Город'" [isRequired]="hasValidator('city','required')" [errors]="errors"
+                        [options]="cities$ | async">
+      </app-select-input>
+    </section>
+
+    <section class="field-wrap">
+      <app-text-input formControlName="street" [isRequired]="hasValidator('street','required')"
+                      [parentForm]="registrationForm" [fieldName]="'street'" [label]="'Улица'"
+                      [errors]="errors">
+      </app-text-input>
+      <app-text-input formControlName="building" [isRequired]="hasValidator('building','required')"
+                      [parentForm]="registrationForm" [fieldName]="'building'" [label]="'Дом'"
+                      [errors]="errors">
+      </app-text-input>
+    </section>
+
+    <div class="form-buttons">
+      <button mat-raised-button color="primary" (click)="onClear()"
+              type="button">Очистить форму
+      </button>
+      <button mat-raised-button color="accent" mat-button type="submit" [disabled]="!registrationForm.valid">Далее</button>
+    </div>
+  </form>
+
+</app-form-wrapper>
+
+
+
+
+
+
+

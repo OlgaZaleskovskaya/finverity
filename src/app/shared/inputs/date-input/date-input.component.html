@@ -1,0 +1,22 @@
+<div class="input-wrapper ">
+  <div class="date-input">
+
+    <label>{{title | capitalFirstLetter}}</label>
+    <div>
+      <input
+        (mouseenter)="isMouseOn = true"
+        (mouseleave)="isMouseOn = false"
+        (blur)="touched()"
+        [ngClass]="{
+        'dirty': formField.dirty,
+        'input-on-focus': isOnFocus,
+        'mouse-on': isMouseOn,
+        'has-error': formField?.invalid && formField?.touched
+      }" type="date" [ngModel]="initialValue | date:'yyyy-MM-dd'" (ngModelChange)="onSelect($event)"
+        [value]="initialValue | date:'yyyy-MM-dd'" [max]="maxDate" [min]="minDate">
+    </div>
+  </div>
+  <p class="errors" *ngIf="formField?.invalid && formField?.touched">
+    <app-field-error [formField]="formField" [errors]="errors"></app-field-error>
+  </p>
+</div>

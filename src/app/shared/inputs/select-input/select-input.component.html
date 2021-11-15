@@ -1,0 +1,31 @@
+<div class="input-wrapper">
+  <div class="select-input">
+    <div>
+      <ng-select class="fv"
+                 [ngClass]="{
+        'input-on-focus': isOnFocus,
+        'mouse-on': isMouseOn,
+        'has-error': formField?.invalid && formField?.touched
+      }"
+                 (blur)="onTouched()"
+                 (focus)="onFocusEvent()"
+                 (focusout)="onFocusOutEvent($event)"
+                 (mouseenter)="onMouseOn(true )"
+                 (mouseleave)="onMouseOn(false)"
+                 (change)="onChange($event)"
+                 name="someName"
+                 [items]="options"
+                 bindLabel="value"
+                 [placeholder]="title"
+                 appendTo="body"
+                 [multiple]="multiple"
+                 [disabled]="isDisabled"
+                 [(ngModel)]="defaultOption">
+      </ng-select>
+
+      <p class="errors" *ngIf="formField?.invalid && formField?.touched">
+        <app-field-error [formField]="formField" [errors]="errors"></app-field-error>
+      </p>
+    </div>
+  </div>
+</div>

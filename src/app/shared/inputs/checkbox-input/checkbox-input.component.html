@@ -1,0 +1,20 @@
+<div class="input-wrapper ">
+  <div class=" checkbox-input">
+    <label>{{title | capitalFirstLetter}}</label>
+    <div>
+      <ng-container *ngFor="let option of options; ">
+        <label [for]="option?.id" class="checkboxLabel">
+          <input type="checkbox"
+                 [ngClass]="{'round': isRound}"
+                 [checked]="option.id == selectedId"
+                 [name]="fieldName"
+                 [id]="option?.id"
+                 [value]="option.id" (change)="onSelect($event)"> {{option.value | capitalFirstLetter}}</label>
+
+      </ng-container>
+    </div>
+  </div>
+  <p class="errors" *ngIf="formField?.invalid && touched">
+    <app-field-error [formField]="formField" [errors]="errors"></app-field-error>
+  </p>
+</div>

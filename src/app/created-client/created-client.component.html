@@ -1,0 +1,36 @@
+<div class="main-container">
+  <mat-card>
+    <h3>Добро пожаловать, {{currentUser.firstName}}</h3>
+    <div class="profile">
+    <fieldset>
+      <legend>Персональные данные</legend>
+      <p><span>Фамилия: </span>{{currentUser.lastName}}</p>
+      <p><span>Отчество: </span>{{currentUser.secondName}}</p>
+      <p><span>Номер телефона: </span>{{currentUser.phone}}</p>
+      <p><span>Пол: </span>{{currentUser.gender.value}}</p>
+      <p><span>Отправлять SMS:</span>{{currentUser.sms}}</p>
+      <p><span>Клиентская группа: </span>{{currentUser.customerGroup}}</p>
+      <p><span>Дата рождения: </span>{{currentUser.birthday}}</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Адрес</legend>
+      <p><span>Почтовый индекс: </span>{{currentUser.zipCode}}</p>
+      <p><span>Страна: </span> {{currentUser.country}}</p>
+      <p><span>Регион: </span> {{currentUser.region}}</p>
+      <p><span>Город: </span>{{currentUser.city}}</p>
+      <p><span>Улица: </span> {{currentUser.street}}</p>
+      <p><span>Дом: </span>{{currentUser.building}}</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Идентификационые данные</legend>
+      <p><span>Документ: </span>{{currentUser.documentType}} </p>
+      <p><span>Номер: </span>{{currentUser.documentNumber}}</p>
+      <p><span>Серия: </span>{{currentUser.series}}</p>
+      <p><span>Кем выдан: </span> {{currentUser.documentOrigin}}</p>
+      <p><span>Когда выдан: </span>{{currentUser.documentReleaseDate}}</p>
+    </fieldset>
+    </div>
+  </mat-card>
+</div>

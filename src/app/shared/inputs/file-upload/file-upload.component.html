@@ -1,0 +1,19 @@
+<div class="input-wrapper">
+  <input type="file" #filePicker (change)="onImagePicked($event)" class="file-input">
+  <div class="file-upload-input">
+    <mat-form-field>
+      <input matInput [disabled]="true" [value]="fileName">
+    </mat-form-field>
+    <button [ngClass]="{'invisible': !disabled}" class="upload-btn delete" mat-mini-fab color="warn" type="button"
+            (click)="onRemoveFile()">
+      <mat-icon>remove</mat-icon></button>
+    <button class="upload-btn" mat-mini-fab color="primary" type="button" [disabled]="disabled"
+            (click)="onClick(filePicker)">
+      <mat-icon>attach_file</mat-icon>
+    </button>
+    <p *ngIf="!(formField?.invalid && formField?.touched)" class="message">{{title}}</p>
+  </div>
+  <p class="errors" *ngIf="formField?.invalid && formField?.touched">
+    <app-field-error [formField]="formField" [errors]="errors"></app-field-error>
+  </p>
+</div>

@@ -1,0 +1,17 @@
+@import '../../../../styles/styles';
+mat-card {
+  width: 80%;
+  position: relative;
+  margin: 50px auto auto;
+
+  mat-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    mat-card-title{
+      color: $color-primary;
+    }
+
+
+  }
+}

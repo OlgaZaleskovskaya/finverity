@@ -1,0 +1,34 @@
+<!--<ng-container *ngIf="formFieldCtrl.touched && formFieldCtrl.invalid">
+  <ng-container *ngFor="let error of errors">
+    <span class="field-error" *ngIf="formFieldCtrl.hasError(error.error)">{{ error.message }}</span>
+  </ng-container>
+</ng-container>-->
+
+<ng-container *ngFor="let error of errors">
+
+    <span class="field-error" *ngIf="formFieldCtrl.hasError(error.error)">
+   <ng-container [ngSwitch]="error.error">
+  <ng-container *ngSwitchCase="'minlength'">{{error.message}} {{formFieldCtrl.errors['minlength']['requiredLength']}}
+    символов.</ng-container>
+      <ng-container
+        *ngSwitchCase="'maxlength'">{{error.message}} {{formFieldCtrl.errors['maxlength']['requiredLength']}}
+        символов.</ng-container>
+      <ng-container
+        *ngSwitchCase="'type'">{{error.message}} {{formFieldCtrl.errors['type']}}
+        символов.</ng-container>
+      <ng-container
+        *ngSwitchCase="'min'">{{error.message}} {{formFieldCtrl.errors['min']}}
+       </ng-container>
+      <ng-container
+        *ngSwitchCase="'pattern'">{{error.message}} {{formFieldCtrl.errors['min']}}
+       </ng-container>
+     <ng-container
+       *ngSwitchCase="'max'">{{error.message}} {{formFieldCtrl.errors['max']}}
+      </ng-container>
+  <ng-container *ngSwitchDefault>{{error.message}}</ng-container>
+</ng-container>
+    </span>
+</ng-container>
+
+
+

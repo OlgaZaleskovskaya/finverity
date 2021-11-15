@@ -1,0 +1,68 @@
+
+<app-form-wrapper>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
+    <section class="field-wrap">
+   <app-select-input [isClearable]="false"
+                      formControlName="documentType" [parentForm]="registrationForm" fieldName="documentType"
+                      [label]="'Тип документа'" [isRequired]="hasValidator('documentType','required')"
+                      [errors]="errors"
+                      [options]="documents$ | async">
+    </app-select-input>
+    </section>
+    <section class="field-wrap">
+      <app-text-input formControlName="series"
+                      [isRequired]="hasValidator('series','required')"
+                      [parentForm]="registrationForm"
+                      [fieldName]="'series'" [label]="'серия'"
+                      [errors]="errors"
+      >
+      </app-text-input>
+    </section>
+    <section class="field-wrap">
+      <app-text-input formControlName="documentNumber"
+                      [isRequired]="hasValidator('documentNumber','required')"
+                      [parentForm]="registrationForm"
+                      [fieldName]="'documentNumber'" [label]="'номер'"
+                      [errors]="errors"
+      >
+      </app-text-input>
+    </section>
+    <section class="field-wrap">
+      <app-text-input formControlName="documentOrigin"
+                      [isRequired]="hasValidator('documentOrigin','required')"
+                      [parentForm]="registrationForm"
+                      [fieldName]="'documentOrigin'" [label]="'кем выдан'"
+                      [errors]="errors"
+      >
+      </app-text-input>
+    </section>
+
+
+    <section class=" field-wrap">
+      <app-date-input [max]="maxDate" [min]="minDate"
+                      formControlName="documentReleaseDate" [parentForm]="registrationForm" fieldName="documentReleaseDate" valueKey="id"
+                      [label]="'Дата выдачи'" [isRequired]="hasValidator('documentReleaseDate','required')" [errors]="errors">
+      </app-date-input>
+    </section>
+    <section class=" field-wrap">
+      <app-file-upload [maxSize]="maxFileSize" [requiredFileType]="fileTypes"
+                      formControlName="file" [parentForm]="registrationForm" fieldName="file"
+                      [label]="'Загрузите файл'" [isRequired]="hasValidator('file','required')" [errors]="errors">
+      </app-file-upload>
+    </section>
+
+
+    <div class="form-buttons">
+      <button mat-raised-button color="primary"
+              type="button" (click)="onClear()">Очистить форму
+      </button>
+      <button mat-raised-button color="accent" mat-button type="submit" [disabled]="!registrationForm.valid || isLoading">Далее</button>
+    </div>
+  </form>
+</app-form-wrapper>
+<div class="spinner" *ngIf="isLoading">
+  <mat-spinner [diameter]="50" [strokeWidth]="7" color="accent"></mat-spinner>
+</div>
+
+
+

@@ -1,0 +1,18 @@
+@import "../../styles/styles.scss";
+h3{
+  color: $color-primary;
+  font-weight: 600;
+}
+div.profile{
+  padding: 10px;
+  fieldset{
+    margin: 20px;
+    legend {
+      color: $color-primary;
+      font-weight: 600;
+    }
+    p span {
+      color: $color-primary;
+    }
+  }
+}

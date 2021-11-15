@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title >{{title | uppercase}}
+    </mat-card-title>
+    <button mat-button matTooltip="Отмена" class='return-btn' type="button" aria-label="return to previous stage"
+            (click)="onCancel()">
+      <mat-icon color='accent'>backspace</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-content ></ng-content>
+  </mat-card-content>
+</mat-card>
+

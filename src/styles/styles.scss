@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@import '_variables';
+@import '_input';
+@import '_mixins';
+@import '~@ng-select/ng-select/themes/default.theme.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+div.main-container {
+  width: 95%;
+  padding: 10px;
+  margin: auto;
+  @media screen and(max-width: 780px) {
+    width: 100%;
+
+  }
+}
+
+form{
+  margin-top: 10rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  section{
+    width: 45%;
+
+  }
+  div.form-buttons {
+    width: 96%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+    button {
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  @media screen and (max-width:780px){
+    flex-direction: column;
+    align-items: center;
+    section{
+      width:95%;
+    }
+  }
+}

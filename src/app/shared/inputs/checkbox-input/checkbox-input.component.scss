@@ -1,0 +1,37 @@
+@import '../../../../styles/styles';
+.checkbox-input {
+ // margin-top: 20px;
+  div {
+  //  display: flex;
+   /// justify-content: flex-start;
+  //  flex-direction: row;
+  //  flex-wrap: wrap;
+
+  //  @include input-border();
+    label {
+    //  display: flex;
+    //  flex-flow: row;
+    //  align-items: center;
+    //  padding: 0.5rem;
+    //  min-width: 25%;
+     // line-height: 1.5em;
+    }
+  }
+}
+
+.round {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid $color-primary;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.round:checked {
+  background-color: $color-accent;
+}

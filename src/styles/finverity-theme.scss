@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$fv-theme-primary: mat-palette($mat-teal, 800,800,900);
+$fv-theme-accent:  mat-palette($mat-deep-orange, A200, A100, A400);
+$fv-theme-warn: mat-palette($mat-red);
+
+$fv-theme: mat-light-theme((
+  color: (
+    primary: $fv-theme-primary,
+    accent: $fv-theme-accent,
+    warn: $fv-theme-warn,
+  )
+));
+
+@include angular-material-theme($fv-theme);

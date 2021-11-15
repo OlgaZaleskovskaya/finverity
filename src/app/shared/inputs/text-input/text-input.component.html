@@ -1,0 +1,33 @@
+<div class="input-wrapper">
+  <div class="text-input">
+    <label
+      [@focus]="isOnFocus? 'focusOn' : 'focusOut'" [ngClass]="{
+        'error': formField?.invalid && formField?.touched
+      }">{{title | capitalFirstLetter}}</label>
+
+      <input
+        type="text"
+        [name]="fieldName"
+        [id]="fieldName"
+        autocomplete="off"
+        [disabled]="isDisabled"
+        [value]="value"
+        [ngClass]="{
+        'input-on-focus': isOnFocus,
+        'mouse-on': isMouseOn,
+        'has-error': formField?.invalid && formField?.touched
+      }"
+        (blur)="onTouched()"
+        (focus)="onFocusEvent()"
+        (focusout)="onFocusOutEvent($event)"
+        (change)="onChange($event)"
+        (mouseenter)="isMouseOn = true"
+        (mouseleave)="isMouseOn = false"
+      >
+
+    <p class="errors" *ngIf="formField?.invalid && formField?.touched">
+      <app-field-error [formField]="formField" [errors]="errors"></app-field-error>
+    </p>
+
+  </div>
+</div>
