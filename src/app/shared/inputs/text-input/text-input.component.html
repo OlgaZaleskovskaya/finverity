@@ -11,7 +11,8 @@
         [id]="fieldName"
         autocomplete="off"
         [disabled]="isDisabled"
-        [value]="value"
+        [(ngModel)]="value"
+
         [ngClass]="{
         'input-on-focus': isOnFocus,
         'mouse-on': isMouseOn,

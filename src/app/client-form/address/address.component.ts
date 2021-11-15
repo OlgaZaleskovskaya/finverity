@@ -59,7 +59,11 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   onClear(): void {
-    this.registrationForm.reset();
+    this.registrationSrv.resetAddressForm();
+    this._generateForm();
+    this.registrationForm.markAsUntouched();
+    this.registrationForm.markAsPristine();
+    this.registrationForm.updateValueAndValidity();
   }
 
   ngOnDestroy(): void {

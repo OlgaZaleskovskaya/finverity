@@ -29,14 +29,7 @@ export class IdentityComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.documents$ = this.registrationSrv.getDocumentTypes();
-    this.registrationForm = this.fb.group({
-      documentType: [''],
-      documentNumber: ['', [Validators.required]],
-      series: ['', [Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)]],
-      documentOrigin: ['', [Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)]],
-      documentReleaseDate: ['', [Validators.required]],
-      file: [null, ]
-    });
+   this._generateForm();
   }
 
   public hasValidator(control: any, validator: string): boolean {
@@ -59,11 +52,28 @@ export class IdentityComponent implements OnInit, OnDestroy {
   }
 
   onClear(): void {
-    this.registrationForm.reset();
+    this.registrationSrv.resetClientForm();
+    this._generateForm();
+    this.registrationForm.markAsUntouched();
+    this.registrationForm.markAsPristine();
+    this.registrationForm.updateValueAndValidity();
   }
 
   ngOnDestroy(): void {
     this._onDestroy.next();
     this._onDestroy.complete();
+  }
+
+  private _generateForm() {
+    this.registrationForm = this.fb.group({
+      documentType: [''],
+      documentNumber: ['', [Validators.required]],
+      series: ['', [Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)]],
+      documentOrigin: ['', [Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)]],
+      documentReleaseDate: ['', [Validators.required]],
+      file: [null, ]
+    });
+
+
   }
 }

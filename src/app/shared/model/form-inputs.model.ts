@@ -29,9 +29,9 @@ export class RegistrationData {
   customerGroup = [];
   gender =  [];
   coordinator = [];
-  sms = null;
+  sms = [];
   zipCode = null;
-  country =[];
+  country = [];
   region  = null;
   city = [];
   street = null;

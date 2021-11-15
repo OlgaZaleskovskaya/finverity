@@ -40,7 +40,7 @@ const GENDER = [
 ];
 
 const SMS_RESPONSE = [
-  {id: '1', value: ''},
+  {id: '1', value: 'нет, не отправлять'},
 ];
 
 const DOCUMENT_TYPE = [
@@ -133,6 +133,24 @@ export class RegistrationService {
     delete formData.file;
     this.registrationFormData = {...this.registrationFormData, ...formData};
   }
+
+  resetClientForm(): void{
+    this.registrationFormData = new RegistrationData();
+
+  }
+
+  resetAddressForm(): void{
+     const form = new RegistrationData();
+     this.registrationFormData = {...form, ...this.registrationFormData};
+  }
+
+  resetIdentityForm(): void{
+    const form = new RegistrationData();
+    this.registrationFormData = {...form, ...this.registrationFormData};
+    this.registrationForm.delete('file');
+  }
+
+
 
   private _saveFormData(): Observable<any> {
     this._fillInRegistrationForm();

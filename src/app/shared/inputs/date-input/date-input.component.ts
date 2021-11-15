@@ -64,9 +64,12 @@ export class DateInputComponent
   }
 
   writeValue(val: number): void {
+    console.log('val', val);
     if (val) {
       const b = new Date(val);
       this.initialValue = b;
+    } else {
+      this.initialValue = null;
     }
   }
 

@@ -91,12 +91,15 @@ export class TextInputComponent
   }
 
   writeValue(value: string): void {
+
     if (value) {
       this.value = value;
       this.isOnFocus = true;
     } else {
       this.value = '';
+      this.isOnFocus = false;
     }
+
   }
 
   registerOnChange(onChange: any): void {

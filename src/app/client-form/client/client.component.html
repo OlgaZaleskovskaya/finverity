@@ -1,4 +1,4 @@
-<app-form-wrapper >
+<app-form-wrapper>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
     <section class="field-wrap">
       <app-text-input formControlName="lastName"
@@ -14,67 +14,69 @@
       <app-text-input formControlName="firstName" [isRequired]="hasValidator('firstName','required')"
                       [parentForm]="registrationForm" [fieldName]="'firstName'" [label]="'Имя'"
                       [errors]="errors"
-                      >
+      >
       </app-text-input>
     </section>
     <section class=" field-wrap">
       <app-text-input formControlName="secondName" [isRequired]="hasValidator('secondName','required')"
                       [parentForm]="registrationForm" [fieldName]="'secondName'" [label]="'Отчество'"
                       [errors]="errors"
-                      >
+      >
       </app-text-input>
     </section>
     <section class=" field-wrap">
 
-       <app-text-input formControlName="phone" [isRequired]="hasValidator('phone','required')"
-                       [parentForm]="registrationForm" [fieldName]="'phone'" [label]="'Номер Телефона'"
-                       [errors]="errors">
-       </app-text-input>
-     </section>
+      <app-text-input formControlName="phone" [isRequired]="hasValidator('phone','required')"
+                      [parentForm]="registrationForm" [fieldName]="'phone'" [label]="'Номер Телефона'"
+                      [errors]="errors">
+      </app-text-input>
+    </section>
 
     <section class=" field-wrap">
-       <app-select-input [isClearable]="false"
-                         formControlName="coordinator" [parentForm]="registrationForm" fieldName="coordinator"
-                         [label]="'Координатор'" [isRequired]="hasValidator('coordinator','required')"
-                         [errors]="errors"
-                         [options]="coordinators$ | async">
-       </app-select-input>
-     </section>
-  <section class=" field-wrap">
-       <app-select-input [isClearable]="false"
-                         formControlName="customerGroup" [multiple]="true" [parentForm]="registrationForm"
-                         fieldName="customerGroup" valueKey="id"
-                         [label]="'Группа клиентов'" [isRequired]="hasValidator('customerGroup','required')"
-                         [errors]="errors" [options]="customerGroup$ | async">
-       </app-select-input>
-     </section>
-     <section class=" field-wrap">
-       <app-checkbox-input
-         formControlName="gender" [isRound]="true" [multiple]="false" [parentForm]="registrationForm" fieldName="gender"
-         [label]="'Пол'" [isRequired]="hasValidator('gender','required')" [errors]="errors" [options]="gender$ | async">
-       </app-checkbox-input>
-     </section>
-     <section class=" field-wrap">
-       <app-date-input [max]="maxBirthday" [min]="minBirthday"
-                       formControlName="birthday" [parentForm]="registrationForm" fieldName="birthday"
-                       [label]="'Дата рождения'" [isRequired]="hasValidator('birthday','required')" [errors]="errors">
-       </app-date-input>
-     </section>
-     <section class=" field-wrap">
+      <app-select-input [isClearable]="false"
+                        formControlName="coordinator" [parentForm]="registrationForm" fieldName="coordinator"
+                        [label]="'Координатор'" [isRequired]="hasValidator('coordinator','required')"
+                        [errors]="errors"
+                        [options]="coordinators$ | async">
+      </app-select-input>
+    </section>
+    <section class=" field-wrap">
+      <app-select-input [isClearable]="false"
+                        formControlName="customerGroup" [multiple]="true" [parentForm]="registrationForm"
+                        fieldName="customerGroup" valueKey="id"
+                        [label]="'Группа клиентов'" [isRequired]="hasValidator('customerGroup','required')"
+                        [errors]="errors" [options]="customerGroup$ | async">
+      </app-select-input>
+    </section>
+    <section class=" field-wrap">
+      <app-checkbox-input
+        formControlName="gender" [isRound]="true" [multiple]="false" [parentForm]="registrationForm" fieldName="gender"
+        [label]="'Пол'" [isRequired]="hasValidator('gender','required')" [errors]="errors"
+        [options]="gender$ | async">
+      </app-checkbox-input>
+    </section>
+    <section class=" field-wrap">
+      <app-date-input [max]="maxBirthday" [min]="minBirthday"
+                      formControlName="birthday" [parentForm]="registrationForm" fieldName="birthday"
+                      [label]="'Дата рождения'" [isRequired]="hasValidator('birthday','required')" [errors]="errors">
+      </app-date-input>
+    </section>
+    <section class=" field-wrap">
 
-       <app-checkbox-input
-         formControlName="sms" [multiple]="false" [parentForm]="registrationForm" fieldName="sms" valueKey="id"
-         [label]="'Не отправлять SMS'" [isRequired]="hasValidator('sms','required')" [errors]="errors"
-         [options]="smsResponse$ | async">
-       </app-checkbox-input>
+      <app-checkbox-input
+        formControlName="sms" [multiple]="false" [parentForm]="registrationForm" fieldName="sms"
+        [label]="'Не отправлять SMS'" [isRequired]="hasValidator('sms','required')" [errors]="errors"
+        [options]="smsResponse$ | async">
+      </app-checkbox-input>
 
-     </section>
+    </section>
 
     <div class="form-buttons">
       <button mat-raised-button color="primary"
               type="button" (click)="onClear()">Очистить форму
       </button>
-      <button mat-raised-button color="accent" mat-button type="submit" [disabled]="!registrationForm.valid">Далее</button>
+      <button mat-raised-button color="accent" mat-button type="submit" [disabled]="!registrationForm.valid">Далее
+      </button>
     </div>
   </form>
 </app-form-wrapper>

@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ERRORS, ISelectData, MAX_DATE, MAX_LENGTH, MIN_DATE, MIN_LENGTH} from '../../shared/model/form-inputs.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {RegistrationService} from '../../shared/services/registration.service';
 import {tap} from 'rxjs/operators';
+
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -23,7 +24,7 @@ export class ClientComponent implements OnInit {
   maxBirthday = MAX_DATE;
   minBirthday = MIN_DATE;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private registrationSrv: RegistrationService) {
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef, private route: ActivatedRoute, private router: Router, private registrationSrv: RegistrationService) {
   }
 
   ngOnInit(): void {
@@ -43,6 +44,7 @@ export class ClientComponent implements OnInit {
 
   onSubmit(): void {
     this.registrationSrv.isValidClientForm = true;
+    console.log('form',this.registrationForm.value);
     this.registrationSrv.submitFormData(this.registrationForm.value);
     this.router.navigate(['../address'], {relativeTo: this.route});
   }
@@ -53,12 +55,19 @@ export class ClientComponent implements OnInit {
   }
 
   onClear(): void {
-    this.registrationForm.reset();
+    this.registrationSrv.resetClientForm();
+    this._generateForm();
+    this.registrationForm.markAsUntouched();
+    this.registrationForm.markAsPristine();
+    this.registrationForm.updateValueAndValidity();
   }
 
   private _generateForm(): void {
     this.registrationForm = this.fb.group({
-      lastName: [this.registrationSrv.registrationFormData.lastName, [Validators.required, Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)]],
+      lastName: [this.registrationSrv.registrationFormData.lastName, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)],
+      }],
       firstName: [this.registrationSrv.registrationFormData.firstName, [Validators.required, Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)]],
       secondName: [this.registrationSrv.registrationFormData.secondName, [Validators.minLength(MIN_LENGTH), Validators.maxLength(MAX_LENGTH)]],
       phone: [this.registrationSrv.registrationFormData.phone, [Validators.pattern(/^\d{11}$/)]],
